@@ -20,7 +20,6 @@ public class Asteroids extends StateBasedGame{
     @Override
     public void initStatesList(GameContainer gc) throws SlickException{
         this.getState(menu).init(gc, this);
-        this.getState(menu).init(gc, this);
         this.enterState(menu); //inciando o estado do jogo como menu
     }
     

@@ -24,7 +24,9 @@ public class Player extends Play{
     private float angle;
     private float speed;
     public Shot tiro; // um unico tiro
-    public ArrayList<Shot> shot = new ArrayList<Shot>(); //lista de tiros
+    public ArrayList<Shot> shot = new ArrayList<>(); //lista de tiros
+    private int SCORE;
+    private int VIDAS;
 
     public Player(int state) {
         super(state);
@@ -34,6 +36,8 @@ public class Player extends Play{
         speed = .1f;
         player = new Image("Art/player.png");
         playerShape = new Rectangle(shiftX, shiftY, player.getWidth(), player.getHeight());
+        SCORE = 0;
+        VIDAS = 3;
     }
     
     public void update(GameContainer gc, int delta) throws SlickException {
@@ -70,6 +74,9 @@ public class Player extends Play{
         player.draw(shiftX, shiftY, 1);
         g.drawString(""+playerPosX+" "+playerPosY, shiftX, shiftY);
         g.draw(playerShape);
+        
+        g.drawString("Pontuação: " + get_pontuacao(), 500, 10);
+        g.drawString("Vidas: " + get_vidas(), 700, 10);
         
         //render do tiro do player
         for(Shot s: shot){
@@ -130,5 +137,26 @@ public class Player extends Play{
     
     public ArrayList<Shot> getShot(){
         return shot;
+    }
+    
+    public void reset(){
+        playerPosX = 0;
+        playerPosY = 0;
+    }
+    
+    public void set_pontuacao(int pont){
+        SCORE = pont;
+    }
+    
+    public int get_pontuacao(){
+        return SCORE;
+    }
+    
+    public void set_vidas(int vidas){
+        VIDAS = vidas;
+    }
+    
+    public int get_vidas(){
+        return VIDAS;
     }
 }

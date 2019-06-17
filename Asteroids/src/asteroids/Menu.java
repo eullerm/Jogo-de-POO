@@ -47,6 +47,7 @@ public class Menu extends BasicGameState{
         if((xpos>380 && xpos<480) && (ypos>255 && ypos<320)){ //verifica se o ponteiro esta sobre o retangulo start
             corStart = Color.green; //hover do retangulo start
             if(mouse.isMouseButtonDown(0)){ //evento apertar botao do mouse
+                sbg.getState(1).init(gc, sbg);
                 sbg.enterState(1); //altera o estado para trocar a "cena" do jogo
             }
         }
